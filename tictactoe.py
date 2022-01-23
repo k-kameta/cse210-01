@@ -11,7 +11,12 @@ larger than 3 is not yet completed. But some parts are ready for >3.
 
 from msilib.schema import Billboard
 
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))  # change directory
+
+
 def main():
+
     print()
     # size = int(input('Inpust a squire board size: '))
     size = 3  # currently only size = 3 is working
@@ -24,7 +29,9 @@ def main():
         next_turn(player, board)
         player = next_player(player)
     display_board(board, size)
+
     print("Game finished. Please try again!") 
+    print()
 
 # 
 def set_bord(size):
@@ -76,3 +83,13 @@ def next_player(current_player):
 
 if __name__ == "__main__":
     main()
+
+# BLACK          = '\033[30m'#(文字)黒
+# RED            = '\033[31m'#(文字)赤
+# GREEN          = '\033[32m'#(文字)緑
+# YELLOW         = '\033[33m'#(文字)黄
+# BLUE           = '\033[34m'#(文字)青
+# MAGENTA        = '\033[35m'#(文字)マゼンタ
+# CYAN           = '\033[36m'#(文字)シアン
+# WHITE          = '\033[37m'#(文字)白
+# COLOR_DEFAULT  = '\033[39m'#文字色をデフォルトに戻す
