@@ -19,8 +19,8 @@ Your program must also meet the following requirements.
 Make the game in any way you like. A few ideas are as follows.
 
 * Enhanced input validation with user-friendly messages. - not yet
-* Enhanced game over messages (x's, o's or draw). -- not yet
-* Enhanced board size (4x4, 5x5, 6x6 grid, or user selected!) -- not completed but working for this.
+* Enhanced game over messages (x's, o's or draw). -- done
+* Enhanced board size (4x4, 5x5, 6x6 grid, or user selected!) -- not completed but I am working for this.
 * Enhanced game display (different colors for each player) -- not yet
 
 

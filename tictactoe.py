@@ -18,29 +18,41 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))  # change directory
 def main():
 
     print()
+
     # size = int(input('Inpust a squire board size: '))
-    size = 3  # currently only size = 3 is working
-    player = input('Which do you want to play first? (x or o): ')
+    size = 3  # currently size is fixed to 3, but this can be changed in future version
+
+    player = input('\033[33m' + 'Which do you want to play first? (x or o): ' + '\033[39m')
     # player = next_player("") 
     
     board = set_bord(size)
     while not (judge_winner(board) or game_finished(board, size)):
-        display_board(board, size)
+        show_board(board, size)
         next_turn(player, board)
         player = next_player(player)
-    display_board(board, size)
+    show_board(board, size)
 
+    if judge_winner(board):
+        print(f"Congraturations! '{next_player(player)}' is the winner!") 
+    elif game_finished(board, size):
+        print("This game is draw! Try again.") 
+
+    print()
     print("Game finished. Please try again!") 
     print()
 
-# 
+
+
+# bord initialization by filling numbers
 def set_bord(size):
     board = []
     for position in range(3*size):
         board.append(position + 1)
     return board
 
-def display_board(board, size):
+
+# re-drawing the boad on screen 
+def show_board(board, size):
     print()
     for raw in range(size):
         for i in range(size-1):
@@ -58,7 +70,8 @@ def game_finished(board, size):
         if board[position] != "x" and board[position] != "o":
             return False
     return True 
-    
+
+# detect the game termination
 def judge_winner(board):
     if  board[0] == board[1] == board[2] or \
         board[3] == board[4] == board[5] or \
@@ -70,11 +83,12 @@ def judge_winner(board):
         board[2] == board[4] == board[6]:
         return(True)
 
+# next turn message to prompt number inputing
 def next_turn(player, board):
     position = int(input(f"{player}'s turn to choose a position number: "))
     board[position - 1] = player
 
-
+# switch the plaer
 def next_player(current_player):
     if current_player == "" or current_player == "o":
         return "x"
