@@ -38,9 +38,10 @@ def main():
             element3 = '\033[33m' + 'x' + '\033[39m'
         elif winner == 'o':
             element3 = '\033[36m' + 'o' + '\033[39m'
-        print(element3 + '|', end='')
-        print(f"Congraturations! '{next_player(player)}' is the winner!") 
     
+        #print(element3 + '|', end='')
+        print(f"Congraturations! '{element3}' is the winner!") 
+    elif game_finished(board, size):
         print("This game is draw! Try again.") 
 
     print()
@@ -102,7 +103,7 @@ def judge_winner(board):
 
 # next turn message to prompt number inputing
 def next_turn(player, board):
-    position = int(input(f"{player}'s turn to choose a position number: "))
+    position = int(input(f"It is {player}'s turn to select a position number: "))
     board[position - 1] = player
 
 # switch the plaer
