@@ -33,8 +33,14 @@ def main():
     show_board(board, size)
 
     if judge_winner(board):
+        winner = next_player(player)
+        if winner == 'x':
+            element3 = '\033[33m' + 'x' + '\033[39m'
+        elif winner == 'o':
+            element3 = '\033[36m' + 'o' + '\033[39m'
+        print(element3 + '|', end='')
         print(f"Congraturations! '{next_player(player)}' is the winner!") 
-    elif game_finished(board, size):
+    
         print("This game is draw! Try again.") 
 
     print()
@@ -56,8 +62,19 @@ def show_board(board, size):
     print()
     for raw in range(size):
         for i in range(size-1):
-            print(str(board[i + raw * size]) + '|', end='')
-        print(str(board[size - 1 + raw * size]))
+            element = str(board[i + raw * size])
+            if element == 'x':
+                element = '\033[33m' + 'x' + '\033[39m'
+            elif element == 'o':
+                element = '\033[36m' + 'o' + '\033[39m'
+            print(element + '|', end='')
+        element2 = str(board[size - 1 + raw * size])
+        if element2 == 'x':
+                element2 = '\033[33m' + 'x' + '\033[39m'
+        elif element2 == 'o':
+                element2 = '\033[36m' + 'o' + '\033[39m'
+        print(element2)
+            
         if raw != (size - 1):
             for i in range(size-1):
                 print('-+' , end='')
